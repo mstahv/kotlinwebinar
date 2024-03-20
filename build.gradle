@@ -1,0 +1,51 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+plugins {
+	id 'org.springframework.boot' version '3.2.3'
+	id 'io.spring.dependency-management' version '1.1.4'
+	id 'com.vaadin' version '24.3.7'
+	id 'org.jetbrains.kotlin.jvm' version '2.0.0-Beta4'
+	id 'org.jetbrains.kotlin.plugin.spring' version '2.0.0-Beta4'
+	id 'org.jetbrains.kotlin.plugin.jpa' version '2.0.0-Beta4'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '21'
+}
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('vaadinVersion', "24.3.7")
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'com.vaadin:vaadin-spring-boot-starter'
+	implementation 'org.jetbrains.kotlin:kotlin-reflect'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'com.h2database:h2'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "com.vaadin:vaadin-bom:${vaadinVersion}"
+	}
+}
+
+tasks.withType(KotlinCompile) {
+	kotlinOptions {
+		freeCompilerArgs += '-Xjsr305=strict'
+		jvmTarget = '21'
+	}
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
