@@ -12,7 +12,7 @@ import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
 // Route annotation maps Vaadin components to specific URLs
-@Route("kotlin")
+@Route
 internal class MainView(personRepository: PersonRepository) : VerticalLayout() {
     init {
 

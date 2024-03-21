@@ -2,6 +2,8 @@
 
 Examples shown in Kotlin webinar 2024-03: Basic Spring Boot + JPA backend, UI with Vaadin in Kotlin.
 
+As a bonus, there is an example of using a Vaadin add-on from vaadin.com/directory, called MediaQuery.
+
 ### Reference Documentation
 For further reference, please consider the following sections:
 
